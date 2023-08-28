@@ -2,6 +2,7 @@
 import { useState } from "react";
 const Form = () => {
   const [image, setImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +16,7 @@ const Form = () => {
     });
     const data = await res.json();
     console.log(data);
+    setImageUrl(data.url);
   };
 
   return (
@@ -25,6 +27,7 @@ const Form = () => {
           Subir
         </button>
       </form>
+      {imageUrl && <img src={imageUrl} alt="imagen" />}
     </div>
   );
 };
